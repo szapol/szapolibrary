@@ -34,5 +34,5 @@ Add token as bearer token to any protected route (POST, PUT, DELETE)
 - user authentication using Fortify
 - request authorization using Sanctum
 - add job to queue on new book creation to update all authors' last book title column
-- artisan command to create an author with provided first name and last name
+- artisan command to create an author with provided first name and last name (php artisan author:create)
 - create and delete book feature tests
