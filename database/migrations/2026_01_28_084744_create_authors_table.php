@@ -3,7 +3,6 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
-use PharIo\Manifest\Author;
 
 return new class extends Migration
 {
@@ -18,6 +17,7 @@ return new class extends Migration
             $table->string('last_name')->nullable();
             $table->string('nickname')->nullable();
             $table->date('birth_date')->nullable();
+            $table->string('last_book_title')->nullable();
             $table->timestamps();
         });
     }
