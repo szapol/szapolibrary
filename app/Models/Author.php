@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Support\Carbon;
+use Illuminate\Database\Eloquent\Builder;
 
 /**
  * App\Models\Author
@@ -54,5 +55,17 @@ class Author extends Model
     public function books(): BelongsToMany
     {
         return $this->belongsToMany(Book::class)->withTimestamps();
+    }
+
+    /**
+     * @param Builder $query
+     * @param string|null $search
+     * @return Builder
+     */
+    public function scopeSearchByBookTitle(Builder $query, ?string $search): Builder
+    {
+        return $query->whereHas('books', function ($query) use ($search) {
+            $query->where('title', 'like', "%{$search}%");
+        });
     }
 }
